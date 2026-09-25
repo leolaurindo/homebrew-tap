@@ -31,8 +31,13 @@ def update_formula(project: str) -> None:
     if count != 1:
         raise SystemExit(f"could not update version in {formula_path}")
 
-    for arch, platform in (("arm64", "arm"), ("amd64", "intel")):
-        asset = f"{project}_{tag}_darwin_{arch}.tar.gz"
+    for os_name, arch in (
+        ("darwin", "arm64"),
+        ("darwin", "amd64"),
+        ("linux", "arm64"),
+        ("linux", "amd64"),
+    ):
+        asset = f"{project}_{tag}_{os_name}_{arch}.tar.gz"
         try:
             digest = checksums[asset]
         except KeyError:
@@ -41,14 +46,13 @@ def update_formula(project: str) -> None:
             raise SystemExit(f"invalid SHA-256 for {asset}")
 
         formula, count = re.subn(
-            rf'(on_{platform} do\n.*?sha256 ")[0-9a-f]{{64}}("\n  end)',
+            rf'(url "[^"]*_{os_name}_{arch}\.tar\.gz"\n[ ]+sha256 ")[0-9a-f]{{64}}(")',
             rf"\g<1>{digest}\g<2>",
             formula,
             count=1,
-            flags=re.DOTALL,
         )
         if count != 1:
-            raise SystemExit(f"could not update {platform} checksum in {formula_path}")
+            raise SystemExit(f"could not update {os_name}/{arch} checksum in {formula_path}")
 
     formula_path.write_text(formula)
     print(f"Updated {formula_path} to {version}")

@@ -23,6 +23,6 @@ Run the **Actions → Update Homebrew formulae → Run workflow** workflow and c
 ./scripts/update-formula.sh gixt     # update only gixt
 ```
 
-The workflow opens a pull request with updated versions and macOS checksums. Review and merge it to publish the updates. Enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests** so the workflow can open pull requests.
+The workflow opens a pull request with updated versions and macOS/Linux checksums. Review and merge it to publish the updates. Enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests** so the workflow can open pull requests.
 
-To add a CLI, add its formula under `Formula/`, add its name to `PROJECTS` in `scripts/update-formula.py` and to the workflow's `project` choices. Its release must provide `checksums.txt` and macOS archives named `<project>_v<version>_darwin_{arm64,amd64}.tar.gz`.
+To add a CLI, add its formula under `Formula/`, add its name to `PROJECTS` in `scripts/update-formula.py` and to the workflow's `project` choices. Its release must provide `checksums.txt` and macOS/Linux archives named `<project>_v<version>_{darwin,linux}_{arm64,amd64}.tar.gz`.
