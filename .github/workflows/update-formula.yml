@@ -10,7 +10,12 @@ on:
         options:
           - all
           - gixt
+          - chess-analyzer-tui
         default: all
+      version:
+        description: Release version for chess-analyzer-tui (blank selects latest on PyPI)
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -18,15 +23,37 @@ permissions:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update selected formulae
+      - name: Add the checked-out tap to Homebrew
+        run: brew tap leolaurindo/tap "$GITHUB_WORKSPACE"
+
+      - name: Update binary formulae
+        if: inputs.project != 'chess-analyzer-tui'
         env:
           GH_TOKEN: ${{ github.token }}
           PROJECT: ${{ inputs.project }}
         run: python3 scripts/update-formula.py "$PROJECT"
+
+      - name: Update chess-analyzer-tui formula
+        if: inputs.project == 'all' || inputs.project == 'chess-analyzer-tui'
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if [ -n "$VERSION" ]; then
+            python3 scripts/update-python-formula.py "$VERSION"
+          else
+            python3 scripts/update-python-formula.py
+          fi
+
+      - name: Validate chess-analyzer-tui formula
+        if: inputs.project == 'all' || inputs.project == 'chess-analyzer-tui'
+        run: |
+          brew audit --strict --formula leolaurindo/tap/chess-analyzer-tui
+          brew install --build-from-source leolaurindo/tap/chess-analyzer-tui
+          brew test leolaurindo/tap/chess-analyzer-tui
 
       - name: Open formula update PR
         uses: peter-evans/create-pull-request@v7
