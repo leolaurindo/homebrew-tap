@@ -3,8 +3,8 @@ class ChessAnalyzerTui < Formula
 
   desc "Terminal chess analysis TUI with Stockfish"
   homepage "https://github.com/leolaurindo/chess-analyzer-tui"
-  url "https://files.pythonhosted.org/packages/85/8b/80e2c0841b16213dc061b7505579fd37bfd6cc3a87327647aceedc615f4c/chess_analyzer_tui-0.2.0.tar.gz"
-  sha256 "626ae5d81627d568ac84fac128b20c6afdac1a7f044ebd95438faeddf122fa70"
+  url "https://files.pythonhosted.org/packages/ff/87/ef56b27ad9064ba98793883310a5901afc253aaeba143991c52d79607b7c/chess_analyzer_tui-0.2.4.tar.gz"
+  sha256 "c97818c82305a97149ef2c09694d7b74a14348e09bb1ed7a3bbebd25488d4ab0"
   license "MIT"
 
   depends_on "python@3.13"
