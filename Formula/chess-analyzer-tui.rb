@@ -3,8 +3,8 @@ class ChessAnalyzerTui < Formula
 
   desc "Terminal chess analysis TUI with Stockfish"
   homepage "https://github.com/leolaurindo/chess-analyzer-tui"
-  url "https://files.pythonhosted.org/packages/ff/87/ef56b27ad9064ba98793883310a5901afc253aaeba143991c52d79607b7c/chess_analyzer_tui-0.2.4.tar.gz"
-  sha256 "c97818c82305a97149ef2c09694d7b74a14348e09bb1ed7a3bbebd25488d4ab0"
+  url "https://files.pythonhosted.org/packages/4a/cb/4941b211f90d076929ff4cb24d88f0428bc2850c320e6d5dc56431572e9f/chess_analyzer_tui-0.2.6.tar.gz"
+  sha256 "cd220b78b7b8d71b04de2dbf81d5f168f880666a16d17edbfa3948111e89eb9a"
   license "MIT"
 
   depends_on "python@3.13"
@@ -36,8 +36,8 @@ class ChessAnalyzerTui < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/42/23/4a86fc741c38c5b69792a4ef954b281afa69bea9f083f881de1b0d23bc07/platformdirs-4.12.3.tar.gz"
-    sha256 "427fc0bb321ae0c5b037fa03238ca74820437be162e78b4848c4d4055b9b766c"
+    url "https://files.pythonhosted.org/packages/80/a8/66d45abadff219e36e2a824181b8f6a67e7ed4572934d6252c71c29d5731/platformdirs-4.13.0.tar.gz"
+    sha256 "1aa0b0d3f224c1f07c295121e312a5a24a180d6ae5a8425ea1784b3e3863e9c0"
   end
 
   resource "pygments" do
