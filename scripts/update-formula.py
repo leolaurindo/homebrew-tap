@@ -25,12 +25,6 @@ def update_formula(project: str) -> None:
 
     formula_path = Path("Formula") / f"{project}.rb"
     formula = formula_path.read_text()
-    formula, count = re.subn(
-        r'(?m)^  version "[^"]+"$', f'  version "{version}"', formula, count=1
-    )
-    if count != 1:
-        raise SystemExit(f"could not update version in {formula_path}")
-
     for os_name, arch in (
         ("darwin", "arm64"),
         ("darwin", "amd64"),
@@ -46,8 +40,8 @@ def update_formula(project: str) -> None:
             raise SystemExit(f"invalid SHA-256 for {asset}")
 
         formula, count = re.subn(
-            rf'(url "[^"]*_{os_name}_{arch}\.tar\.gz"\n[ ]+sha256 ")[0-9a-f]{{64}}(")',
-            rf"\g<1>{digest}\g<2>",
+            rf'url "[^"]*_{os_name}_{arch}\.tar\.gz"(\n[ ]+sha256 ")[0-9a-f]{{64}}(")',
+            rf'url "https://github.com/{repository}/releases/download/{tag}/{asset}"\g<1>{digest}\g<2>',
             formula,
             count=1,
         )
