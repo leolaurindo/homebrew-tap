@@ -5,25 +5,25 @@ class Gixt < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/leolaurindo/gixt/releases/download/v0.4.4/gixt_v0.4.4_darwin_arm64.tar.gz"
-      sha256 "b8ab0d6c34c041b5dda7070c260c48c64b34fbae18eee1a085f56882021f644f"
+      url "https://github.com/leolaurindo/gixt/releases/download/v0.5.0/gixt_v0.5.0_darwin_arm64.tar.gz"
+      sha256 "2a552dfc2f4adff010e36e08f8eaee7bffa54363a18cc69e963560a5bff38716"
     end
 
     on_intel do
-      url "https://github.com/leolaurindo/gixt/releases/download/v0.4.4/gixt_v0.4.4_darwin_amd64.tar.gz"
-      sha256 "28f235dc48b8e849167b6073dc5bd27b6914d77104152a0d91a6e41fdd5c75e1"
+      url "https://github.com/leolaurindo/gixt/releases/download/v0.5.0/gixt_v0.5.0_darwin_amd64.tar.gz"
+      sha256 "425239690531f95e494e2f24281da3c7116ce5d9f339e9acf0ef9495ec729e35"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/leolaurindo/gixt/releases/download/v0.4.4/gixt_v0.4.4_linux_arm64.tar.gz"
-      sha256 "9877c7eebf069d937336bd3bb09dfaca51f7531c08b8f2be895e8d2487d75666"
+      url "https://github.com/leolaurindo/gixt/releases/download/v0.5.0/gixt_v0.5.0_linux_arm64.tar.gz"
+      sha256 "ec15c78ac462376e602437408482865493dbad1c9eef98ae2ddec690e7fbd1b7"
     end
 
     on_intel do
-      url "https://github.com/leolaurindo/gixt/releases/download/v0.4.4/gixt_v0.4.4_linux_amd64.tar.gz"
-      sha256 "4c95718817f12cb3a31b3a362bc02b94608f829f504e5185e5a33461121e027e"
+      url "https://github.com/leolaurindo/gixt/releases/download/v0.5.0/gixt_v0.5.0_linux_amd64.tar.gz"
+      sha256 "12622612e6a05054695503109991c84f4d5b4e75b6c233b8991197f9d9d6fe53"
     end
   end
 
